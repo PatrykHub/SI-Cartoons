@@ -277,7 +277,8 @@ rule "Robots_Yes"
 		String[] rozwiazanie = {
 			"Robotech",
 			"Voltron",
-			"Transformers"
+			"Transformers",
+			"Challenge of the GoBots"
 			};
 		MyFrame.wynik(rozwiazanie);
 end
@@ -379,7 +380,7 @@ rule "Swords_No"
 		$a : Wezel(pytanie == "Swords", odpowiedz == "No")
 	then
 		String[] mozliwosci = {"Yes", "No"};
-		String answer = MyFrame.checkout("Military and law enforcment?", mozliwosci);
+		String answer = MyFrame.checkout("Military and law enforcement?", mozliwosci);
 		insert (new Wezel ("Military", answer));
 end
 
@@ -400,6 +401,7 @@ rule "Military_Yes"
 			"Inspector Gadget",
 			"BraveStarr",
 			"The Adventures of the Galaxy Rangers",
+			"Sky Commanders",
 			"SilverHawks",
 			"Exosquad"		
 			};
@@ -444,12 +446,9 @@ rule "Cowboys_Yes"
 		$a : Wezel(pytanie == "Cowboys", odpowiedz == "Yes")
 	then
 		String[] rozwiazanie = {
-			"Captain Simian and the Space Monkeys",
-			"Jayce and the Wheeled Warriors",
-			"BraveStarr",
+			"Wild West Cowboys of Moo Mesa",
 			"The Adventures of the Galaxy Rangers",
-			"SilverHawks",
-			"Exosquad"		
+			"BraveStarr"
 			};
 		MyFrame.wynik(rozwiazanie);
 end
@@ -526,7 +525,7 @@ rule "Educational_Yes"
 	then
 		String[] rozwiazanie = {
 			"The Magic School Bus",
-			"Captain Planet and the Planeters"		
+			"Captain Planet and the Planeteers"		
 			};
 		MyFrame.wynik(rozwiazanie);
 end
@@ -537,7 +536,7 @@ rule "Educational_No"
 	then
 		String[] rozwiazanie = {
 			"Bionic Six",
-			"The Real ADventures of Jonny Quest",
+			"The Real Adventures of Jonny Quest",
 			"Mighty Max"		
 			};
 		MyFrame.wynik(rozwiazanie);
@@ -589,7 +588,7 @@ rule "Undead_Yes"
 	then
 		String[] rozwiazanie = {
 			"Mummies Alive",
-			"Skeleteon Warriors"		
+			"Skeleton Warriors"		
 			};
 		MyFrame.wynik(rozwiazanie);
 end
@@ -603,5 +602,3 @@ rule "Undead_No"
 			};
 		MyFrame.wynik(rozwiazanie);
 end
-
-
