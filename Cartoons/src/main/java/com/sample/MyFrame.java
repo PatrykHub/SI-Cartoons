@@ -21,6 +21,5 @@ import javax.swing.JOptionPane;
 	public static void wynik(String[] items) {
 		JOptionPane.showMessageDialog(null, "Best for you are:\n - " + String.join("\n - ", items));
 	}
-	
-	
  }
+ 
