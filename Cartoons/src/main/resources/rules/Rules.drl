@@ -1,0 +1,607 @@
+package com.cartoons
+ 
+import com.cartoons.Cartoons;
+import java.util.Arrays;
+
+declare Wezel
+	pytanie: String
+	odpowiedz : String
+end
+ 
+rule "Games"
+	when
+
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("A cartoon based on a video game?", mozliwosci);
+		insert (new Wezel ("Game", answer));
+end
+
+rule "Game_Yes"
+	when
+		$a : Wezel(pytanie == "Game", odpowiedz == "Yes")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("A Nintendo franchise?", mozliwosci);
+		insert (new Wezel ("Nintendo", answer));
+end
+
+rule "Game_No"
+	when
+		$a : Wezel(pytanie == "Game", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("A celebrity?", mozliwosci);
+		insert (new Wezel ("Celebrity", answer));
+end
+
+rule "Nintendo_Yes"
+	when
+		$a : Wezel(pytanie == "Nintendo", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"The Super Mario Bros. Super Show", 
+			"Captain N The Game Master", 
+			"The Adventure of Super Mario Bros. 3",
+			"Super Mario World",
+			"The Legend of Zelda",
+			"Pokemon"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Nintendo_No"
+	when
+		$a : Wezel(pytanie == "Nintendo", odpowiedz == "No")
+	then
+		String[] rozwiazanie = {
+			"Adventures of Sonic the Hedgehog",
+            "Mega Man",
+            "Mortal Kombat Defenders of the Realm",
+            "Double Dragon",
+            "Wing Commander Academy",
+            "Street Fighter"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Celebrity_Yes"
+	when
+		$a : Wezel(pytanie == "Celebrity", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Chuck Norris: Karate Kommandos",
+			"Mister T"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Celebrity_No"
+	when
+		$a : Wezel(pytanie == "Celebrity", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Animals, furries, and the like?", mozliwosci);
+		insert (new Wezel ("Animals", answer));
+end
+
+rule "Animals_Yes"
+	when
+		$a : Wezel(pytanie == "Animals", odpowiedz == "Yes")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Cats?", mozliwosci);
+		insert (new Wezel ("Cats", answer));
+end
+
+rule "Animals_No"
+	when
+		$a : Wezel(pytanie == "Animals", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Do you dig giants robots?", mozliwosci);
+		insert (new Wezel ("Robots", answer));
+end
+
+rule "Cats_Yes"
+	when
+		$a : Wezel(pytanie == "Cats", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"ThunderCats",
+			"Swat Kats"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Cats_No"
+	when
+		$a : Wezel(pytanie == "Cats", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Rodents?", mozliwosci);
+		insert (new Wezel ("Rodents", answer));
+end
+
+rule "Rodents_Yes"
+	when
+		$a : Wezel(pytanie == "Rodents", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Biker Mice from Mars",
+			"Danger Mouse",
+			"Chip N Dale Rescue Rangers"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Rodents_No"
+	when
+		$a : Wezel(pytanie == "Rodents", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Dinosaurs?", mozliwosci);
+		insert (new Wezel ("Dinosaurs", answer));
+end
+	
+rule "Dinosaurs_Yes"
+	when
+		$a : Wezel(pytanie == "Dinosaurs", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Cadillacs and Dinosaurs",
+			"Extreme Dinosaurs",
+			"Dino Riders",
+			"Dinosaucers"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Dinosaurs_No"
+	when
+		$a : Wezel(pytanie == "Dinosaurs", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Ducks?", mozliwosci);
+		insert (new Wezel ("Ducks", answer));
+end
+
+rule "Ducks_Yes"
+	when
+		$a : Wezel(pytanie == "Ducks", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Count Duckula",
+			"DuckTales",
+			"Darkwing Duck"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Ducks_No"
+	when
+		$a : Wezel(pytanie == "Ducks", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Bears?", mozliwosci);
+		insert (new Wezel ("Bears", answer));
+end
+
+rule "Bears_Yes"
+	when
+		$a : Wezel(pytanie == "Bears", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"TaleSpin",
+			"Disney's Adventures of the Gummi Bears",
+			"The Care Bears"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Bears_No"
+	when
+		$a : Wezel(pytanie == "Bears", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Monkeys?", mozliwosci);
+		insert (new Wezel ("Monkeys", answer));
+end
+
+
+rule "Monkeys_Yes"
+	when
+		$a : Wezel(pytanie == "Monkeys", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Captain Simian and the Space Monkeys"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Monkeys_No"
+	when
+		$a : Wezel(pytanie == "Monkeys", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Cows?", mozliwosci);
+		insert (new Wezel ("Cows", answer));
+end
+
+rule "Cows_Yes"
+	when
+		$a : Wezel(pytanie == "Cows", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Wild West Cowboys of Moo Mesa"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Cows_No"
+	when
+		$a : Wezel(pytanie == "Cows", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Godless abominations?", mozliwosci);
+		insert (new Wezel ("Abominations", answer));
+end
+
+rule "Abominations_Yes"
+	when
+		$a : Wezel(pytanie == "Abominations", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Smurfs",
+			"Snorks"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Abominations_No"
+	when
+		$a : Wezel(pytanie == "Abominations", odpowiedz == "No")
+	then
+		String[] rozwiazanie = {
+			"Teenage Mutant Ninja Turtles",
+			"Street Sharks",
+			"Gargoyles"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Robots_Yes"
+	when
+		$a : Wezel(pytanie == "Robots", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Robotech",
+			"Voltron",
+			"Transformers"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Robots_No"
+	when
+		$a : Wezel(pytanie == "Robots", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("A cartoon based on a movie?", mozliwosci);
+		insert (new Wezel ("Movie", answer));
+end
+
+rule "Movie_Yes"
+	when
+		$a : Wezel(pytanie == "Movie", odpowiedz == "Yes")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("An R-rated movie?", mozliwosci);
+		insert (new Wezel ("R-rated", answer));
+end
+
+rule "Movie_No"
+	when
+		$a : Wezel(pytanie == "Movie", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Do you want a post-apocalyptic setting?", mozliwosci);
+		insert (new Wezel ("Postapo", answer));
+end
+
+rule "R-rated_Yes"
+	when
+		$a : Wezel(pytanie == "R-rated", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Rambo and the Force of Freedom",
+			"Robocop: The Animated Series",
+			"Highlander: The Animated Series"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "R-rated_No"
+	when
+		$a : Wezel(pytanie == "R-rated", odpowiedz == "No")
+	then
+		String[] rozwiazanie = {
+			"James Bond Jr.",
+			"Star Wars: Droids",
+			"Star Wars: Ewoks",
+			"Extreme Ghostbusters",
+			"The Real Ghostbusters"
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Postapo_Yes"
+	when
+		$a : Wezel(pytanie == "Postapo", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Highlander: The Animated Series",
+			"Cadillacs and Dinosaurs",
+			"Thundarr the Barbarian",
+			"Spiral Zone"			
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Postapo_No"
+	when
+		$a : Wezel(pytanie == "Postapo", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Swords and sorcery?", mozliwosci);
+		insert (new Wezel ("Swords", answer));
+end
+
+rule "Swords_Yes"
+	when
+		$a : Wezel(pytanie == "Swords", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"The Pirates of Dark Water",
+			"Visionaries",
+			"Thundarr the Barbarian",
+			"Conan the Adventurer",
+			"Dungeons & Dragons",
+			"She-Ra, Princess of Power",
+			"He-Man and the Masters of the Universe",
+			"King Arthur and the Knights of Justice"			
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Swords_No"
+	when
+		$a : Wezel(pytanie == "Swords", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Military and law enforcment?", mozliwosci);
+		insert (new Wezel ("Military", answer));
+end
+
+
+rule "Military_Yes"
+	when
+		$a : Wezel(pytanie == "Military", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"C.O.P.S.",
+			"G.I. Joe",
+			"M.A.S.K",
+			"Rambo and the Force of Freedom",
+			"Robocop: The Animated Series",
+			"Spiral Zone",
+			"Centurions",
+			"Sam & Max: Freelance Police",
+			"Inspector Gadget",
+			"BraveStarr",
+			"The Adventures of the Galaxy Rangers",
+			"SilverHawks",
+			"Exosquad"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Military_No"
+	when
+		$a : Wezel(pytanie == "Military", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Space?", mozliwosci);
+		insert (new Wezel ("Space", answer));
+end
+
+rule "Space_Yes"
+	when
+		$a : Wezel(pytanie == "Space", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Captain Simian and the Space Monkeys",
+			"Jayce and the Wheeled Warriors",
+			"BraveStarr",
+			"The Adventures of the Galaxy Rangers",
+			"SilverHawks",
+			"Exosquad"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Space_No"
+	when
+		$a : Wezel(pytanie == "Space", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Cowboys?", mozliwosci);
+		insert (new Wezel ("Cowboys", answer));
+end
+
+rule "Cowboys_Yes"
+	when
+		$a : Wezel(pytanie == "Cowboys", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Captain Simian and the Space Monkeys",
+			"Jayce and the Wheeled Warriors",
+			"BraveStarr",
+			"The Adventures of the Galaxy Rangers",
+			"SilverHawks",
+			"Exosquad"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Cowboys_No"
+	when
+		$a : Wezel(pytanie == "Cowboys", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Do you want to understand what's going on?", mozliwosci);
+		insert (new Wezel ("Understanding", answer));
+end
+
+rule "Understanding_Yes"
+	when
+		$a : Wezel(pytanie == "Understanding", odpowiedz == "Yes")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Kids doing awesome stuff?", mozliwosci);
+		insert (new Wezel ("Kids", answer));
+end
+
+rule "Understanding_No"
+	when
+		$a : Wezel(pytanie == "Understanding", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("In an awesome way?", mozliwosci);
+		insert (new Wezel ("Awesome", answer));
+end
+
+
+rule "Awesome_Yes"
+	when
+		$a : Wezel(pytanie == "Awesome", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Inhumanoids"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Awesome_No"
+	when
+		$a : Wezel(pytanie == "Awesome", odpowiedz == "No")
+	then
+		String[] rozwiazanie = {
+			"Aeon Flux"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Kids_Yes"
+	when
+		$a : Wezel(pytanie == "Kids", odpowiedz == "Yes")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("In an educational manner?", mozliwosci);
+		insert (new Wezel ("Educational", answer));
+end
+
+rule "Kids_No"
+	when
+		$a : Wezel(pytanie == "Kids", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Do you like computers?", mozliwosci);
+		insert (new Wezel ("Computers", answer));
+end
+
+rule "Educational_Yes"
+	when
+		$a : Wezel(pytanie == "Educational", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"The Magic School Bus",
+			"Captain Planet and the Planeters"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Educational_No"
+	when
+		$a : Wezel(pytanie == "Educational", odpowiedz == "No")
+	then
+		String[] rozwiazanie = {
+			"Bionic Six",
+			"The Real ADventures of Jonny Quest",
+			"Mighty Max"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Computers_Yes"
+	when
+		$a : Wezel(pytanie == "Computers", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"ReBoot"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Computers_No"
+	when
+		$a : Wezel(pytanie == "Computers", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("Something truly outrageous?", mozliwosci);
+		insert (new Wezel ("Outrageous", answer));
+		
+end
+
+rule "Outrageous_Yes"
+	when
+		$a : Wezel(pytanie == "Outrageous", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Jem"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Outrageous_No"
+	when
+		$a : Wezel(pytanie == "Outrageous", odpowiedz == "No")
+	then
+		String[] mozliwosci = {"Yes", "No"};
+		String answer = MyFrame.checkout("The undead?", mozliwosci);
+		insert (new Wezel ("Undead", answer));
+end
+
+
+rule "Undead_Yes"
+	when
+		$a : Wezel(pytanie == "Undead", odpowiedz == "Yes")
+	then
+		String[] rozwiazanie = {
+			"Mummies Alive",
+			"Skeleteon Warriors"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+rule "Undead_No"
+	when
+		$a : Wezel(pytanie == "Undead", odpowiedz == "No")
+	then
+		String[] rozwiazanie = {
+			"The World of David the Gnome"		
+			};
+		MyFrame.wynik(rozwiazanie);
+end
+
+
